@@ -1,0 +1,27 @@
+This is an example of a Spring Cloud Stream processor using Kafka Streams support.
+
+This sample demonstrates the concept of interactive queries in kafka streams.
+There is a REST service provided as part of the application that can be used to query the store interactively.
+
+Running the app:
+
+We will run 2 instances of the processor application to demonstrate that regardless of which instance hosts the keys, the REST endpoint will serve the requests.
+For more information on how this is done, please take a look at the application code.
+
+1. `java -jar target/kafka-streams-interactive-query-demo-0.0.1-SNAPSHOT.jar --server.port=9000 --spring.cloud.stream.kafka.streams.binder.configuration.application.server=localhost:9000
+
+2. On another terminal session:
+
+`java -jar target/kafka-streams-interactive-query-demo-0.0.1-SNAPSHOT.jar --server.port=9092 --spring.cloud.stream.kafka.streams.binder.configuration.application.server=localhost:9092
+
+5. Run the stand-alone `EventGenerator` application to generate data and start the processing.
+Keep it running for a while.
+
+6. Go to the URL: https://localhost:9000/trends/top-posts?category=all
+keep refreshing the URL and you will see the media post engagement activities count information changes.
+
+Take a look at the console sessions for the applications and you will see that it may not be the processor started on 9000 that serves this request.
+
+7. Go to the URL: https://localhost:9092/trends/top-posts?category=all
+
+Take a look at the console sessions for the applications and you will see that it may not be the processor started on 9092 that serves this request.

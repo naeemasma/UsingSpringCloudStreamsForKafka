@@ -1,0 +1,20 @@
+server:
+  port: 9000
+spring.cloud.stream.bindings.process-out-0:
+  destination: enriched-engagement-activity-topic
+spring.cloud.stream.bindings.process-in-0:
+  destination: engagement-activity-topic
+spring.cloud.stream.bindings.process-in-1:
+  destination: consumer-topic
+spring.cloud.stream.bindings.process-in-2:
+  destination: post-topic
+spring.application.name: Kafka-Streams-interactive-query-demo
+spring.cloud.stream.kafka.streams.binder:
+  brokers: localhost
+  configuration:
+    commit.interval.ms: 1000
+spring.cloud.stream.kafka.streams.binder.autoAddPartitions: true
+spring.cloud.stream.kafka.streams.binder.minPartitionCount: 4
+spring.cloud.stream.kafka.streams.binder.configuration.application.server: localhost:9000
+spring.cloud.stream.kafka.streams.bindings.process-in-1.consumer.materializedAs: all-consumers-store
+spring.cloud.stream.kafka.streams.bindings.process-in-2.consumer.materializedAs: all-posts-store
