@@ -8,7 +8,7 @@
 		<version>2.2.2.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.fepoc.cp.streams</groupId>
+	<groupId>com.example.streams</groupId>
 	<artifactId>Kafka-Streams-interactive-query-demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Kafka-Streams-interactive-query-demo</name>
